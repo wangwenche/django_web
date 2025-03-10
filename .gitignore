@@ -1,0 +1,10 @@
+db.sqlite3
+geckodriver.log
+.venv
+.vscode
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pywz
