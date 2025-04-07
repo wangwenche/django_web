@@ -1,14 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-import unittest
 from selenium.webdriver.common.by import By
+from django.test import LiveServerTestCase
 
 # 启动服务器：python manage.py runserver
 # 运行功能测试：python functional_tests.py
 # 运行单元测试：python manage.py test
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
     
     def setUp(self):
         self.browser = webdriver.Chrome()
@@ -24,7 +24,7 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_start_a_list_and_retrieve_it_later(self):
         # 张三听说有一个在线待办事项的应用
         # 他去看了这个应用的首页
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
         
         # 他注意到网页的标题和头部都包含“To-Do”这个词
         self.assertIn('To-Do', self.browser.title)
@@ -64,5 +64,3 @@ class NewVisitorTest(unittest.TestCase):
         
         # 页面再次更新，她的清单中显示了这两个待办事项
         
-if __name__ == '__main__':
-    unittest.main()
