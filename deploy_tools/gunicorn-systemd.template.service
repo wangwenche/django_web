@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn server for SITENAME
+
+[Server]
+Restart=on-failure
+User=wang
+WorkingDirectory=/home/wang/sites/SITENAME/source
+ExecStart=gunicorn --bind unix:/tmp/SITENAME.socket notes.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
